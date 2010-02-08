@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="plone.app.intid">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <includeOverrides package="five.intid" file="overrides.zcml" />
+  <include package="five.intid" file="base.zcml" />
+  <include package="five.intid" file="cmfdirectoryview.zcml" />
+  <include file="profiles.zcml" />
+
+  <!-- Register intid handlers for all CMF/Plone content -->
+  <subscriber
+     handler="five.intid.intid.addIntIdSubscriber"
+     for="Products.CMFCore.interfaces.IDynamicType
+          zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      />
+  <subscriber
+      handler="five.intid.intid.removeIntIdSubscriber"
+      for="Products.CMFCore.interfaces.IDynamicType
+           zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+      />
+  <subscriber
+      handler="five.intid.intid.moveIntIdSubscriber"
+      for="Products.CMFCore.interfaces.IDynamicType
+           zope.lifecycleevent.interfaces.IObjectMovedEvent"
+      />
+
+</configure>
