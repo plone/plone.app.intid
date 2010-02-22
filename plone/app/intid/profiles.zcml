@@ -26,6 +26,7 @@
         description="Register all plone content with intid utility."
         handler=".setuphandlers.registerContent">
       <depends name="catalog"/>
+      <depends name="import-intid-util"/>
     </genericsetup:importStep>
 
 </configure>
