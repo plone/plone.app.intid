@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0b3 Unreleased
+1.0b3 2010-02-27
 -------------------
 
 - Made compatible with Plone 3.3
