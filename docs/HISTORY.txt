@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0b3 Unreleased
+-------------------
+
+- Made compatible with Plone 3.3
+  [alecm]
+
 1.0b2 2010-02-22
 -------------------
 
@@ -11,3 +17,4 @@ Changelog
 -------------------
 
 - Initial release
+  [alecm]
