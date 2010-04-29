@@ -31,7 +31,6 @@ def register_all_content_for_intids(portal):
         if HAS_LINGUAPLONE:
             query['Language'] = 'all'
         content = cat(query)
-        content = cat(object_provides=IDynamicType.__identifier__)
         for brain in content:
             if brain.getPath() in registered_paths:
                 existing += 1
