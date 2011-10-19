@@ -27,7 +27,7 @@ setup(name='plone.app.intid',
           'zope.intid',
           'zope.app.intid',
           'zope.lifecycleevent',
-          'five.intid',
+          'five.intid>=1.0',
           'Products.CMFCore',
           # -*- Extra requirements: -*-
       ],
