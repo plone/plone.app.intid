@@ -4,6 +4,8 @@ Changelog
 1.0b4 (svn/unreleased)
 ----------------------
 
+- Remove includeOverride for five.intid. [thet]
+
 - Fix import step intid-register-content to register content 
 in all Languages if LinguaPlone is installed. [csenger]
 
