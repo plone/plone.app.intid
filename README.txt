@@ -10,5 +10,5 @@ IntId utility.
 Installation notes
 ------------------
 
-Installation for Plone 3.3 requires five.intid > 0.3.0. Suitable version is
-0.4.3.
+Installation for Plone 3.3 requires plone.app.intid <= 1.0b3 and
+five.intid <= 0.4.3.
