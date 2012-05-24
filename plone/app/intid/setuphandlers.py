@@ -5,6 +5,8 @@ from five.intid.site import addUtility
 from five.intid.intid import IntIds
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import IDynamicType
+from Products.CMFCore.interfaces import IContentish
+
 
 try:
     import Products.LinguaPlone
@@ -21,13 +23,20 @@ def register_all_content_for_intids(portal):
     register = intids.register
     # Take advantage of paths stored in keyreferences in five.intid to optimize
     # registration
-    registered_paths = dict((ref.path,None) for ref in intids.ids
-                                                        if hasattr(ref, 'path'))
+    registered_paths = dict((ref.path, None) for ref in intids.ids
+                                            if hasattr(ref, 'path'))
     # Count how many objects we register
     registered = 0
     existing = 0
     if cat is not None:
-        query = {'object_provides': IDynamicType.__identifier__}
+        query = {'object_provides':
+                    {
+                        'query': [
+                            IDynamicType.__identifier__,
+                            IContentish.__identifier__,
+                        ],
+                        'operator': 'or'
+                    }}
         if HAS_LINGUAPLONE:
             query['Language'] = 'all'
         content = cat(query)
@@ -43,6 +52,7 @@ def register_all_content_for_intids(portal):
                 pass
     return registered, existing
 
+
 def add_intids(context):
     # We need to explicilty use the zope.intids interface and
     # the zope.app.intids one
@@ -51,6 +61,7 @@ def add_intids(context):
     addUtility(context, app_IIntIds, IntIds, ofs_name='intids',
                findroot=False)
 
+
 def installIntIds(context):
     if context.readDataFile('install_intids.txt') is None:
         return
@@ -58,10 +69,11 @@ def installIntIds(context):
     add_intids(portal)
     return "Added intid utility."
 
+
 def registerContent(context):
     if context.readDataFile('intid_register_content.txt') is None:
         return
     portal = context.getSite()
     registered, existing = register_all_content_for_intids(portal)
     return ("Assigned intids to %s content objects, %s objects "
-            "already had intids."%(registered, existing))
+            "already had intids." % (registered, existing))
