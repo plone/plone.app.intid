@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.0.1'
 
 setup(name='plone.app.intid',
       version=version,
@@ -32,7 +32,7 @@ setup(name='plone.app.intid',
           # -*- Extra requirements: -*-
       ],
       extras_require={
-          'tests': ['plone.app.testing',
+          'test': ['plone.app.testing',
           ],
       },
       entry_points="""

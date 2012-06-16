@@ -1,13 +1,14 @@
 Changelog
 =========
 
-1.0.x (unreleased)
+1.0.1 (2012-06-15)
 ------------------
 
 - Fixed registration of pre existing contents in the intids utility
-- Added setup tests
   [gborelli]
 
+- Added setup tests
+  [gborelli]
 
 1.0 (2012-02-20)
 ----------------

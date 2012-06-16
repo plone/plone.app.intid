@@ -8,7 +8,7 @@ from plone.app.testing import applyProfile
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
 from ..setuphandlers import add_intids
-from .layers import SETUP_TESTING
+from ..testing import SETUP_TESTING
 
 
 class TestSetup(unittest.TestCase):
@@ -44,9 +44,3 @@ class TestSetup(unittest.TestCase):
         # when we install p.app.intid our folder is referencend by intid
         applyProfile(self.portal, 'plone.app.intid:default')
         self.assertIsNotNone(intids.getId(folder))
-
-
-def test_suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestSetup))
-    return suite
