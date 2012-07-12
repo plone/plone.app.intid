@@ -4,9 +4,7 @@ from zope.intid.interfaces import IIntIds
 from five.intid.site import addUtility
 from five.intid.intid import IntIds
 from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.interfaces import IDynamicType
 from Products.CMFCore.interfaces import IContentish
-
 
 try:
     import Products.LinguaPlone
@@ -29,14 +27,7 @@ def register_all_content_for_intids(portal):
     registered = 0
     existing = 0
     if cat is not None:
-        query = {'object_provides':
-                    {
-                        'query': [
-                            IDynamicType.__identifier__,
-                            IContentish.__identifier__,
-                        ],
-                        'operator': 'or'
-                    }}
+        query = {'object_provides': IContentish.__identifier__}
         if HAS_LINGUAPLONE:
             query['Language'] = 'all'
         content = cat(query)
