@@ -4,6 +4,10 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
+- intid/setuphandlers.py: Removed blacklisted and unused interface
+  IDynamicType from query. Closes http://dev.plone.org/ticket/11946.
+  [kleist]
+
 
 1.0.1 (2012-06-15)
 ------------------
