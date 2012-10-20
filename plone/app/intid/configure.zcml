@@ -33,17 +33,17 @@
     <subscriber
         handler="five.intid.intid.addIntIdSubscriber"
         for="Products.CMFCore.interfaces.IDynamicType
-             zope.app.container.interfaces.IObjectAddedEvent"
+             zope.lifecycleevent.interfaces.IObjectAddedEvent"
         />
     <subscriber
         handler="five.intid.intid.removeIntIdSubscriber"
         for="Products.CMFCore.interfaces.IDynamicType
-             zope.app.container.interfaces.IObjectRemovedEvent"
+             zope.lifecycleevent.interfaces.IObjectRemovedEvent"
         />
     <subscriber
         handler="five.intid.intid.moveIntIdSubscriber"
         for="Products.CMFCore.interfaces.IDynamicType
-             zope.app.container.interfaces.IObjectMovedEvent"
+             zope.lifecycleevent.interfaces.IObjectMovedEvent"
         />
   </configure>
 
