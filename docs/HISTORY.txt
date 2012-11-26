@@ -4,6 +4,10 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
+- removing zope.app.container as dependency and importing events interfaces
+  from zope.lifecycle
+  [garbas]
+
 - intid/setuphandlers.py: Removed blacklisted and unused interface
   IDynamicType from query. Closes http://dev.plone.org/ticket/11946.
   [kleist]
