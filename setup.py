@@ -32,7 +32,6 @@ setup(
         'zope.lifecycleevent',
         'five.intid>=1.0',
         'Products.CMFCore',
-        # -*- Extra requirements: -*-
     ],
     extras_require={
         'test': ['plone.app.testing'],
