@@ -8,6 +8,7 @@ from Products.CMFCore.interfaces import IContentish
 
 try:
     import Products.LinguaPlone
+    Products.LinguaPlone
     HAS_LINGUAPLONE = True
 except:
     HAS_LINGUAPLONE = False
@@ -21,8 +22,9 @@ def register_all_content_for_intids(portal):
     register = intids.register
     # Take advantage of paths stored in keyreferences in five.intid to optimize
     # registration
-    registered_paths = dict((ref.path, None) for ref in intids.ids
-                                            if hasattr(ref, 'path'))
+    registered_paths = dict(
+        (ref.path, None) for ref in intids.ids
+        if hasattr(ref, 'path'))
     # Count how many objects we register
     registered = 0
     existing = 0

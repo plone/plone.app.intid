@@ -4,8 +4,6 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="plone.app.intid">
 
-  <five:registerPackage package="." initialize=".initialize" />
-
   <include package="five.intid" file="base.zcml" />
   <include package="five.intid" file="cmfdirectoryview.zcml" />
   <include file="profiles.zcml" />

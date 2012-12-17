@@ -14,6 +14,4 @@ class IntidSetupFixture(PloneSandboxLayer):
 
 
 SETUP_TESTING = IntegrationTesting(
-                    bases=(IntidSetupFixture(), ),
-                    name="IntidSetupFixture:Setup"
-                )
+    bases=(IntidSetupFixture(),), name="IntidSetupFixture:Setup")

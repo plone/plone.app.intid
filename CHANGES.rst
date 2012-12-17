@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.2 (unreleased)
+1.0.2 (2012-12-17)
 ------------------
 
 - removing zope.app.container as dependency and importing events interfaces
