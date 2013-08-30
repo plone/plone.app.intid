@@ -7,6 +7,7 @@ from zope.component import getUtility
 from plone.app.testing import applyProfile
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
+from plone.dexterity.fti import DexterityFTI
 from ..setuphandlers import add_intids
 from ..testing import SETUP_TESTING
 
@@ -16,6 +17,8 @@ class TestSetup(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
+        fti = DexterityFTI('Folder')
+        self.portal.portal_types._setObject('Folder', fti)
 
     def tearDown(self):
         setRoles(self.portal, TEST_USER_ID, ['Member'])
