@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-import unittest2 as unittest
-
-from zope.intid.interfaces import IIntIds
-from zope.component import getUtility
-
+from Products.CMFCore.utils import getToolByName
 from plone.app.testing import applyProfile
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
 from plone.dexterity.fti import DexterityFTI
-from ..setuphandlers import add_intids
-from ..testing import SETUP_TESTING
+from plone.app.intid.setuphandlers import add_intids
+from plone.app.intid.testing import SETUP_TESTING
+from zope.intid.interfaces import IIntIds
+from zope.component import getUtility
+
+import unittest2 as unittest
 
 
 class TestSetup(unittest.TestCase):
@@ -18,7 +18,8 @@ class TestSetup(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         fti = DexterityFTI('Folder')
-        self.portal.portal_types._setObject('Folder', fti)
+        typetool = getToolByName(self.portal, "portal_types")
+        typetool._setObject('Folder', fti)
 
     def tearDown(self):
         setRoles(self.portal, TEST_USER_ID, ['Member'])
