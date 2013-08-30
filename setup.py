@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.2'
+version = '1.0.3dev'
 
 setup(
     name='plone.app.intid',
@@ -34,7 +34,9 @@ setup(
         'Products.CMFCore',
     ],
     extras_require={
-        'test': ['plone.app.testing'],
+        'test': [
+            'plone.app.testing',
+        ],
     },
     entry_points="""
     [z3c.autoinclude.plugin]
