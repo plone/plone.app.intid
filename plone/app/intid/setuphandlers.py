@@ -1,10 +1,11 @@
-from zope.component import getUtility
-from zope.app.intid.interfaces import IIntIds as app_IIntIds
-from zope.intid.interfaces import IIntIds
-from five.intid.site import addUtility
-from five.intid.intid import IntIds
-from Products.CMFCore.utils import getToolByName
+# -*- coding: utf-8 -*-
 from Products.CMFCore.interfaces import IContentish
+from Products.CMFCore.utils import getToolByName
+from five.intid.intid import IntIds
+from five.intid.site import addUtility
+from zope.app.intid.interfaces import IIntIds as app_IIntIds
+from zope.component import getUtility
+from zope.intid.interfaces import IIntIds
 
 try:
     import Products.LinguaPlone

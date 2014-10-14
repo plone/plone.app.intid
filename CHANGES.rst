@@ -4,7 +4,8 @@ Changelog
 1.0.4 (unreleased)
 --------------
 
-- Nothing changed yet.
+- fix test to not add ``Folder`` fti in testSetup if it already exists.
+  [jensens]
 
 
 1.0.3 (2014-02-25)

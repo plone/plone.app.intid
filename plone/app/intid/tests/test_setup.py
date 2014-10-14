@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
-from plone.app.testing import applyProfile
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-from plone.dexterity.fti import DexterityFTI
 from plone.app.intid.setuphandlers import add_intids
 from plone.app.intid.testing import SETUP_TESTING
-from zope.intid.interfaces import IIntIds
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import applyProfile
+from plone.app.testing import setRoles
+from plone.dexterity.fti import DexterityFTI
 from zope.component import getUtility
-
+from zope.intid.interfaces import IIntIds
 import unittest2 as unittest
 
 
@@ -17,9 +16,13 @@ class TestSetup(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        fti = DexterityFTI('Folder')
+        # XXX below code is only needed if theres no Folder FTI already setup.
         typetool = getToolByName(self.portal, "portal_types")
-        typetool._setObject('Folder', fti)
+        if not "Folder" in typetool.objectIds():
+            # XXX Check if this is needed for Plone 5.0! In 4.3 the FTI is
+            # already setup
+            fti = DexterityFTI('Folder')
+            typetool._setObject('Folder', fti)
 
     def tearDown(self):
         setRoles(self.portal, TEST_USER_ID, ['Member'])
