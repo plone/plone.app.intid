@@ -4,6 +4,10 @@ Changelog
 1.0.4 (unreleased)
 --------------
 
+- Don't install utility for zope.app.intid's IIntIds,
+  which is just an alias for the one in zope.intid.
+  [davisagli]
+
 - fix test to not add ``Folder`` fti in testSetup if it already exists.
   [jensens]
 

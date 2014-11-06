@@ -3,7 +3,6 @@ from Products.CMFCore.interfaces import IContentish
 from Products.CMFCore.utils import getToolByName
 from five.intid.intid import IntIds
 from five.intid.site import addUtility
-from zope.app.intid.interfaces import IIntIds as app_IIntIds
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
 
@@ -48,11 +47,7 @@ def register_all_content_for_intids(portal):
 
 
 def add_intids(context):
-    # We need to explicilty use the zope.intids interface and
-    # the zope.app.intids one
     addUtility(context, IIntIds, IntIds, ofs_name='intids',
-               findroot=False)
-    addUtility(context, app_IIntIds, IntIds, ofs_name='intids',
                findroot=False)
 
 

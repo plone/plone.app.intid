@@ -28,7 +28,6 @@ setup(
     install_requires=[
         'setuptools',
         'zope.intid',
-        'zope.app.intid',
         'zope.lifecycleevent',
         'five.intid>=1.0',
         'Products.CMFCore',
