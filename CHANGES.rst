@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0.4 (unreleased)
---------------
+1.0.4 (2015-03-12)
+------------------
 
 - Don't install utility for zope.app.intid's IIntIds,
   which is just an alias for the one in zope.intid.
