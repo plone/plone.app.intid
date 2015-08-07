@@ -9,40 +9,20 @@
   <include file="profiles.zcml" />
 
   <!-- Register intid handlers for all CMF/Plone content -->
-  <configure zcml:condition="installed zope.lifecycleevent.interfaces.IObjectMovedEvent">
-    <subscriber
-        handler="five.intid.intid.addIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectAddedEvent"
-        />
-    <subscriber
-        handler="five.intid.intid.removeIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectRemovedEvent"
-        />
-    <subscriber
-        handler="five.intid.intid.moveIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectMovedEvent"
-        />
-  </configure>
-  <!-- Zope 2.10 compatibility -->
-  <configure zcml:condition="not-installed zope.lifecycleevent.interfaces.IObjectMovedEvent">
-    <subscriber
-        handler="five.intid.intid.addIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectAddedEvent"
-        />
-    <subscriber
-        handler="five.intid.intid.removeIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectRemovedEvent"
-        />
-    <subscriber
-        handler="five.intid.intid.moveIntIdSubscriber"
-        for="Products.CMFCore.interfaces.IDynamicType
-             zope.lifecycleevent.interfaces.IObjectMovedEvent"
-        />
-  </configure>
+  <subscriber
+      handler="five.intid.intid.addIntIdSubscriber"
+      for="Products.CMFCore.interfaces.IDynamicType
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      />
+  <subscriber
+      handler="five.intid.intid.removeIntIdSubscriber"
+      for="Products.CMFCore.interfaces.IDynamicType
+           zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+      />
+  <subscriber
+      handler="five.intid.intid.moveIntIdSubscriber"
+      for="Products.CMFCore.interfaces.IDynamicType
+           zope.lifecycleevent.interfaces.IObjectMovedEvent"
+      />
 
 </configure>
