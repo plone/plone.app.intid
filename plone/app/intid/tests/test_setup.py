@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
-from plone.app.intid.setuphandlers import add_intids
 from plone.app.intid.testing import SETUP_TESTING
 from plone.app.testing import TEST_USER_ID
-from plone.app.testing import applyProfile
 from plone.app.testing import setRoles
 from plone.dexterity.fti import DexterityFTI
 from zope.component import getUtility
@@ -18,7 +16,7 @@ class TestSetup(unittest.TestCase):
         self.portal = self.layer['portal']
         # XXX below code is only needed if theres no Folder FTI already setup.
         typetool = getToolByName(self.portal, "portal_types")
-        if not "Folder" in typetool.objectIds():
+        if "Folder" not in typetool.objectIds():
             # XXX Check if this is needed for Plone 5.0! In 4.3 the FTI is
             # already setup
             fti = DexterityFTI('Folder')
@@ -27,6 +25,19 @@ class TestSetup(unittest.TestCase):
     def tearDown(self):
         setRoles(self.portal, TEST_USER_ID, ['Member'])
 
+    def test_already_installed(self):
+        """plone.app.intid is a dependency of plone.app.linknitegrity
+        which is a dependency of CMFPlone, so it is always installed.
+        This tests if this is true.
+        """
+        # we create a folder
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        folder_id = self.portal.invokeFactory('Folder', 'folder')
+        folder = self.portal[folder_id]
+        intids = getUtility(IIntIds)
+        self.assertIsNotNone(intids.getId(folder))
+
+    @unittest.skip('p.a.intid is always installed')
     def test_install(self):
         """When p.app.intid is intalled it registers some utility
         from zope.intid and five.intid and search in portal_catalog
@@ -35,6 +46,8 @@ class TestSetup(unittest.TestCase):
         This test checks that all pre existing contents
         are registered correctly
         """
+        from plone.app.intid.setuphandlers import add_intids
+        from plone.app.testing import applyProfile
 
         # we create a folder before the intallation of plone.app.intid
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
