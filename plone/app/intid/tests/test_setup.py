@@ -26,7 +26,7 @@ class TestSetup(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Member'])
 
     def test_already_installed(self):
-        """plone.app.intid is a dependency of plone.app.linknitegrity
+        """plone.app.intid is a dependency of plone.app.linkintegrity
         which is a dependency of CMFPlone, so it is always installed.
         This tests if this is true.
         """
