@@ -4,7 +4,8 @@ Changelog
 1.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove duplicate zcml (they are 100% the same).
+  [pbauer]
 
 
 1.0.4 (2015-03-12)
