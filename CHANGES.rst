@@ -1,10 +1,10 @@
 Changelog
 =========
 
-1.0.5 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
-- plone.app.intid is now a dependency of plone.app.linknitegrity which is
+- Plone 5: plone.app.intid is a dependency of plone.app.linknitegrity which is
   a dependency of CMFPlone, so it is always installed. Adapt tests to this
   change.
   [pbauer]
