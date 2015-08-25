@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.5 (unreleased)
+1.0.5 (2015-08-25)
 ------------------
 
 - Remove duplicate zcml (they are 100% the same).
