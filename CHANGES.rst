@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.0 (unreleased)
+1.1.0 (2015-09-07)
 ------------------
 
 - Plone 5: plone.app.intid is a dependency of plone.app.linkintegrity which is
