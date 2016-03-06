@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-from Products.CMFCore.interfaces import IContentish
-from Products.CMFCore.utils import getToolByName
 from five.intid.intid import IntIds
 from five.intid.site import addUtility
+from Products.CMFCore.interfaces import IContentish
+from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
+
 
 try:
     import Products.LinguaPlone
     Products.LinguaPlone
     HAS_LINGUAPLONE = True
-except:
+except ImportError:
     HAS_LINGUAPLONE = False
 
 
@@ -56,7 +57,7 @@ def installIntIds(context):
         return
     portal = context.getSite()
     add_intids(portal)
-    return "Added intid utility."
+    return 'Added intid utility.'
 
 
 def registerContent(context):
@@ -64,5 +65,5 @@ def registerContent(context):
         return
     portal = context.getSite()
     registered, existing = register_all_content_for_intids(portal)
-    return ("Assigned intids to %s content objects, %s objects "
-            "already had intids." % (registered, existing))
+    return ('Assigned intids to {0} content objects, {1} objects '
+            'already had intids.'.format(registered, existing))

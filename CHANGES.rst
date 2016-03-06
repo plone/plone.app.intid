@@ -10,7 +10,8 @@ New:
 
 Fixes:
 
-- *add item here*
+- Fix code anayslis errors reported by http://jenkins.plone.org/view/Pkgs/job/package-plone.app.intid
+  [gforcada]
 
 
 1.1.0 (2015-09-07)
