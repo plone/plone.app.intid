@@ -4,13 +4,9 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-New:
-
-- *add item here*
-
 Fixes:
 
-- Fix code anayslis errors reported by http://jenkins.plone.org/view/Pkgs/job/package-plone.app.intid
+- Fix code analysis errors reported by http://jenkins.plone.org/view/Pkgs/job/package-plone.app.intid
   [gforcada]
 
 
