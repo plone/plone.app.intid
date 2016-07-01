@@ -6,8 +6,14 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 
 try:
+    # XXX here we must consider plone.app.multilingual as well!
     import Products.LinguaPlone
     Products.LinguaPlone
     HAS_LINGUAPLONE = True
@@ -16,34 +22,36 @@ except ImportError:
 
 
 def register_all_content_for_intids(portal):
-    """Registers all existing content with the intid utility.  This
-    will not be fast."""
+    """Registers all existing content with the intid utility.
+    This will not be fast."""
     cat = getToolByName(portal, 'portal_catalog', None)
+    if cat is None:
+        return
     intids = getUtility(IIntIds)
-    register = intids.register
     # Take advantage of paths stored in keyreferences in five.intid to optimize
     # registration
-    registered_paths = dict(
-        (ref.path, None) for ref in intids.ids
-        if hasattr(ref, 'path'))
+    registered_paths = {
+        ref.path for ref in intids.ids
+        if hasattr(ref, 'path')
+    }
     # Count how many objects we register
     registered = 0
     existing = 0
-    if cat is not None:
-        query = {'object_provides': IContentish.__identifier__}
-        if HAS_LINGUAPLONE:
-            query['Language'] = 'all'
-        content = cat(query)
-        for brain in content:
-            if brain.getPath() in registered_paths:
-                existing += 1
-                continue
-            try:
-                obj = brain.getObject()
-                register(obj)
-                registered += 1
-            except (AttributeError, KeyError):
-                pass
+    query = {'object_provides': IContentish.__identifier__}
+    if HAS_LINGUAPLONE:
+        query['Language'] = 'all'
+    for brain in cat(query):
+        if brain.getPath() in registered_paths:
+            existing += 1
+            continue
+        try:
+            obj = brain.getObject()
+            intids.register(obj)
+            registered += 1
+        except (AttributeError, KeyError, TypeError):
+            # "TypeError" happens on a "could not adapt" - this may happen
+            # for some contenttypes and must not stop this from working.
+            logger.exception(brain.getURL())
     return registered, existing
 
 
