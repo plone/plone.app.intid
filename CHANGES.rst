@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- setuphandler now can deal with could-not-adapt exception (TypeError).
+- This may happen and must not stop the handler from working
 
 
 1.1.1 (2016-04-15)
