@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
 
-import unittest2 as unittest
+import unittest
 
 
 class TestSetup(unittest.TestCase):
