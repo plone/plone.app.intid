@@ -4,14 +4,6 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-Breaking changes:
-
-- *add item here*
-
-New features:
-
-- *add item here*
-
 Bug fixes:
 
 - removed unittest2 dependency
