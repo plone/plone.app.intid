@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+1.1.4 (2020-04-20)
+------------------
+
+Bug fixes:
+
+
+- Minor packaging updates. (#1)
+- Initialize towncrier.
+  [gforcada] (#2548)
+
+
 1.1.3 (2017-06-08)
 ------------------
 
