@@ -11,16 +11,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-try:
-    # XXX here we must consider plone.app.multilingual as well!
-    import Products.LinguaPlone
-
-    Products.LinguaPlone
-    HAS_LINGUAPLONE = True
-except ImportError:
-    HAS_LINGUAPLONE = False
-
-
 def register_all_content_for_intids(portal):
     """Registers all existing content with the intid utility.
     This will not be fast."""
@@ -35,8 +25,6 @@ def register_all_content_for_intids(portal):
     registered = 0
     existing = 0
     query = {"object_provides": IContentish.__identifier__}
-    if HAS_LINGUAPLONE:
-        query["Language"] = "all"
     for brain in cat(query):
         if brain.getPath() in registered_paths:
             existing += 1
