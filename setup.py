@@ -8,7 +8,7 @@ setup(
     version=version,
     description="Installation and migration support for five.intid within "
                 "Plone/CMF",
-    long_description='%s\n%s' % (
+    long_description='{}\n{}'.format(
         open("README.rst").read(),
         open(os.path.join("CHANGES.rst")).read(),
     ),

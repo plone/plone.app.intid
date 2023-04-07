@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from five.intid.intid import IntIds
 from five.intid.site import addUtility
 from Products.CMFCore.interfaces import IContentish
@@ -73,5 +72,5 @@ def registerContent(context):
         return
     portal = context.getSite()
     registered, existing = register_all_content_for_intids(portal)
-    return ('Assigned intids to {0} content objects, {1} objects '
+    return ('Assigned intids to {} content objects, {} objects '
             'already had intids.'.format(registered, existing))
