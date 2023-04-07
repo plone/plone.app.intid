@@ -42,6 +42,7 @@ setup(
         "zope.lifecycleevent",
         "five.intid>=1.0",
         "Products.CMFCore",
+        "Products.GenericSetup",
     ],
     extras_require={
         "test": [
