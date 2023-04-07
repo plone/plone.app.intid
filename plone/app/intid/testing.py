@@ -4,15 +4,15 @@ from plone.app.testing import PloneSandboxLayer
 
 
 class IntidSetupFixture(PloneSandboxLayer):
-    defaultBases = (PLONE_FIXTURE, )
+    defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         # pylint: disable=W0613
         import plone.app.intid
+
         self.loadZCML(package=plone.app.intid)
 
 
 SETUP_TESTING = IntegrationTesting(
-    bases=(IntidSetupFixture(), ),
-    name='IntidSetupFixture:Setup'
+    bases=(IntidSetupFixture(),), name="IntidSetupFixture:Setup"
 )

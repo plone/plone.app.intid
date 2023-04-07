@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 try:
     # XXX here we must consider plone.app.multilingual as well!
     import Products.LinguaPlone
+
     Products.LinguaPlone
     HAS_LINGUAPLONE = True
 except ImportError:
@@ -23,22 +24,19 @@ except ImportError:
 def register_all_content_for_intids(portal):
     """Registers all existing content with the intid utility.
     This will not be fast."""
-    cat = getToolByName(portal, 'portal_catalog', None)
+    cat = getToolByName(portal, "portal_catalog", None)
     if cat is None:
         return
     intids = getUtility(IIntIds)
     # Take advantage of paths stored in keyreferences in five.intid to optimize
     # registration
-    registered_paths = {
-        ref.path for ref in intids.ids
-        if hasattr(ref, 'path')
-    }
+    registered_paths = {ref.path for ref in intids.ids if hasattr(ref, "path")}
     # Count how many objects we register
     registered = 0
     existing = 0
-    query = {'object_provides': IContentish.__identifier__}
+    query = {"object_provides": IContentish.__identifier__}
     if HAS_LINGUAPLONE:
-        query['Language'] = 'all'
+        query["Language"] = "all"
     for brain in cat(query):
         if brain.getPath() in registered_paths:
             existing += 1
@@ -55,22 +53,23 @@ def register_all_content_for_intids(portal):
 
 
 def add_intids(context):
-    addUtility(context, IIntIds, IntIds, ofs_name='intids',
-               findroot=False)
+    addUtility(context, IIntIds, IntIds, ofs_name="intids", findroot=False)
 
 
 def installIntIds(context):
-    if context.readDataFile('install_intids.txt') is None:
+    if context.readDataFile("install_intids.txt") is None:
         return
     portal = context.getSite()
     add_intids(portal)
-    return 'Added intid utility.'
+    return "Added intid utility."
 
 
 def registerContent(context):
-    if context.readDataFile('intid_register_content.txt') is None:
+    if context.readDataFile("intid_register_content.txt") is None:
         return
     portal = context.getSite()
     registered, existing = register_all_content_for_intids(portal)
-    return ('Assigned intids to {} content objects, {} objects '
-            'already had intids.'.format(registered, existing))
+    return (
+        "Assigned intids to {} content objects, {} objects "
+        "already had intids.".format(registered, existing)
+    )
