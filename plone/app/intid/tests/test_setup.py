@@ -14,7 +14,7 @@ class TestSetup(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
-        # XXX below code is only needed if theres no Folder FTI already setup.
+        # XXX below code is only needed if there's no Folder FTI already setup.
         typetool = getToolByName(self.portal, "portal_types")
         if "Folder" not in typetool.objectIds():
             # XXX Check if this is needed for Plone 5.0! In 4.3 the FTI is
@@ -39,7 +39,7 @@ class TestSetup(unittest.TestCase):
 
     @unittest.skip("p.a.intid is always installed")
     def test_install(self):
-        """When p.app.intid is intalled it registers some utility
+        """When p.app.intid is installed it registers some utility
         from zope.intid and five.intid and search in portal_catalog
         all contents in order to register them in these utilities.
 
@@ -49,7 +49,7 @@ class TestSetup(unittest.TestCase):
         from plone.app.intid.setuphandlers import add_intids
         from plone.app.testing import applyProfile
 
-        # we create a folder before the intallation of plone.app.intid
+        # we create a folder before the installation of plone.app.intid
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         folder_id = self.portal.invokeFactory("Folder", "folder")
         folder = self.portal[folder_id]
