@@ -112,7 +112,7 @@ Fixes:
 1.0b2 2010-02-22
 -------------------
 
-- fixed dependecy of import profiles
+- fixed dependency of import profiles
   [naro]
 
 1.0b1 2010-02-07
