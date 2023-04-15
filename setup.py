@@ -4,7 +4,7 @@ from setuptools import setup
 import os
 
 
-version = "1.1.5.dev0"
+version = "2.0.0"
 
 setup(
     name="plone.app.intid",
