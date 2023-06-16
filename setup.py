@@ -1,19 +1,22 @@
+from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
 
-import os
-
 
 version = "2.0.1.dev0"
+
+long_description = (
+    f"{Path('README.rst').read_text()}\n{Path('CHANGES.rst').read_text()}"
+)
 
 setup(
     name="plone.app.intid",
     version=version,
     description="Installation and migration support for five.intid within " "Plone/CMF",
-    long_description="{}\n{}".format(
-        open("README.rst").read(),
-        open(os.path.join("CHANGES.rst")).read(),
-    ),
+    long_description=long_description,
+    long_description_content_type="text/x-rst",
+    # Get more strings from
+    # https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",
