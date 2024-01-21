@@ -41,11 +41,12 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "setuptools",
-        "zope.intid",
-        "zope.lifecycleevent",
         "five.intid>=1.0",
         "Products.CMFCore",
         "Products.GenericSetup",
+        "zope.component",
+        "zope.intid",
+        "zope.lifecycleevent",
     ],
     extras_require={
         "test": [
