@@ -7,7 +7,6 @@ from zope.intid.interfaces import IIntIds
 
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 
